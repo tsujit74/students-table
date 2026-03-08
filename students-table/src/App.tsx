@@ -1,14 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import StudentTable from "./components/StudentTable";
 import StudentForm from "./components/StudentForm";
 import DeleteConfirmModal from "./components/DeleteConfirmModal";
+import LoadingSpinner from "./components/LoadingSpinner";
 import { initialStudents } from "./data/students";
 import type { Student } from "./types/student";
 
 function App() {
-  const [students, setStudents] = useState<Student[]>(initialStudents);
+  const [students, setStudents] = useState<Student[]>([]);
   const [editingStudent, setEditingStudent] = useState<Student | null>(null);
   const [deletingStudent, setDeletingStudent] = useState<Student | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setStudents(initialStudents);
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const addStudent = (student: Student) => {
     setStudents((prev) => [...prev, student]);
@@ -25,17 +36,27 @@ function App() {
     setEditingStudent(null);
   };
 
- 
   const openDeleteModal = (id: number) => {
     const student = students.find((s) => s.id === id) || null;
     setDeletingStudent(student);
   };
 
-
   const confirmDelete = (id: number) => {
     setStudents((prev) => prev.filter((s) => s.id !== id));
     setDeletingStudent(null);
   };
+
+
+  if (loading) {
+    return (
+      <div className="max-w-5xl mx-auto p-8">
+        <h1 className="text-3xl font-bold mb-6">
+          Students Management
+        </h1>
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-5xl mx-auto p-8">

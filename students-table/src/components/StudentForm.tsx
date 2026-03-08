@@ -64,14 +64,18 @@ export default function StudentForm({
 
 
   const submitForm = (data: FormData) => {
-    if (editingStudent) {
-      onUpdate({ id: editingStudent.id, ...data })
-    } else {
-      onAdd({ id: Date.now(), ...data })
-    }
-
-    reset()
+  if (editingStudent) {
+    onUpdate({ id: editingStudent.id, ...data })
+  } else {
+    onAdd({ id: Date.now(), ...data })
   }
+
+  reset({
+    name: "",
+    email: "",
+    age: 0,
+  })
+}
 
   /* Reset logic */
   const resetForm = () => {

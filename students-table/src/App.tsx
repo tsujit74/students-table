@@ -68,31 +68,45 @@ function App() {
   }
 
   return (
-    <div className="max-w-5xl mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-6">Students Management</h1>
+    <div className="max-w-7xl mx-auto p-8">
+      <h1 className="text-3xl font-bold mb-8">Students Management</h1>
 
-      <StudentForm
-        onAdd={addStudent}
-        onUpdate={handleUpdate}
-        editingStudent={editingStudent}
-      />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="md:col-span-1 p-6 h-fit">
+          <StudentForm
+            onAdd={addStudent}
+            onUpdate={handleUpdate}
+            editingStudent={editingStudent}
+          />
+        </div>
 
-      <div className="flex justify-end mb-4">
-        <button
-          onClick={handleExport}
-          disabled={exporting}
-          className={`px-4 py-2 rounded-md text-white transition
-    ${exporting ? "bg-green-400 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"}`}
-        >
-          {exporting ? "Downloading..." : "Download Excel"}
-        </button>
+        <div className="md:col-span-2">
+          <div className="flex justify-between items-center mb-4">
+            <p className="text-gray-700 font-medium">
+              Total Students: {students.length}
+            </p>
+
+            <button
+              onClick={handleExport}
+              disabled={exporting}
+              className={`px-4 py-2 rounded-md text-white transition
+      ${
+        exporting
+          ? "bg-green-400 cursor-not-allowed"
+          : "bg-green-600 hover:bg-green-700"
+      }`}
+            >
+              {exporting ? "Downloading..." : "Download Excel"}
+            </button>
+          </div>
+
+          <StudentTable
+            students={students}
+            onEdit={handleEdit}
+            onDelete={openDeleteModal}
+          />
+        </div>
       </div>
-
-      <StudentTable
-        students={students}
-        onEdit={handleEdit}
-        onDelete={openDeleteModal}
-      />
 
       <DeleteConfirmModal
         student={deletingStudent}

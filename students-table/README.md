@@ -1,73 +1,114 @@
-# React + TypeScript + Vite
+# Student Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple **Student Management System** built with **React + TypeScript + Vite + Tailwind CSS**.
+This project allows users to **add, edit, delete, and export student data to Excel** with a clean and responsive UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Live DEMO
 
-## React Compiler
+* LIVE : https://students-table-eight.vercel.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* ➕ Add new students
+* ✏️ Edit existing student details
+* 🗑️ Delete students with confirmation modal
+* 📊 Display total number of students
+* 📥 Export student data to Excel
+* ⏳ Loading spinner for simulated data loading
+* 📱 Responsive layout (Form on left, table on right)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* **React**
+* **TypeScript**
+* **Vite**
+* **Tailwind CSS**
+* **XLSX / Excel Export Utility**
+
+---
+
+## 📂 Project Structure
+
+```
+src
+│
+├── components
+│   ├── StudentForm.tsx
+│   ├── StudentTable.tsx
+│   ├── DeleteConfirmModal.tsx
+│   └── LoadingSpinner.tsx
+│
+├── data
+│   └── students.ts
+│
+├── types
+│   └── student.ts
+│
+├── utils
+│   └── exportExcel.ts
+│
+└── App.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚙️ Installation
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Clone the repository:
+
+```bash
+git clone https://github.com/tsujit74/students-table
 ```
+
+Navigate into the project:
+
+```bash
+cd student-table
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+---
+
+## 📸 UI Overview
+
+* **Left Section:** Student Form (Add / Edit)
+* **Right Section:** Student Table + Export Button
+* **Top:** Total Students Counter
+
+---
+
+## 📦 Future Improvements
+
+* Search and filter students
+* Pagination
+* Backend API integration
+* Database storage
+* Authentication
+
+---
+
+## 👨‍💻 Author
+
+**Sujit Thakur**
+
+* GitHub: https://github.com/tsujit74
+* Portfolio: https://sujit-porttfolio.vercel.app/
+
+---
+
